@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+}
+
+h1, h4, .box, .search-button {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+}
+
+.go-button {
+    margin-left: -29px;
+}
+
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.prev-search {
+    width: 25%;
+    margin: auto;
+    border: solid 2px;
+    text-align: center;
+}
+
+
+
+
