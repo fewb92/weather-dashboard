@@ -7,8 +7,23 @@
 */
 
 // create a var for appid - var appid = 'd91f911bcf2c0f925fb6535547a5ddc9';
-
+const searchEl = document.querySelector('#search-field')
 const apiKey = 'e65d424e1ef4600643d29a7a40affd05'
+const weatherAPI = 'http://api.openweathermap.org/data/2.5/weather?q='+'Bronx'+'&appid='+apiKey
+
+fetch(weatherAPI)
+  .then(function (response) {
+      return response.json()
+  })
+  .then(function (json) {
+      console.log(json)
+      // firstSprite.src = json.sprites.front_default
+      // firstSprite.alt = json.name
+      // firstPokeName.textContent = json.name
+      // console.log(json)
+  })
+
+console.log(searchEl)
 
 
 // variable to hold our search history !searchHistory.includes(city)
