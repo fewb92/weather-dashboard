@@ -7,6 +7,10 @@
 */
 
 // create a var for appid - var appid = 'd91f911bcf2c0f925fb6535547a5ddc9';
+
+const apiKey = 'e65d424e1ef4600643d29a7a40affd05'
+
+
 // variable to hold our search history !searchHistory.includes(city)
 
 // get the history from localStorage and update the searchHistory variable - if there are no results -> [] (make sure to parse JSON)

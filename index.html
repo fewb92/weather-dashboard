@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="development/style/style.css">
-    <title>Freaking Weather</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Weather App</title>
 </head>
 <body>
 
@@ -13,18 +14,21 @@
 
     <h4>Search for a city to get the weather</h4>
 
-    <div class="box">
-        <input class="search-button" type="text" placeholder="search">
-        <button class="go-button">Go</button>
-    </div>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search for a city" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+      </div>
 
-    <div class="prev-search">
-        <ul>
-            <li>The Bronx</li>
-            <li>Queens</li>
-            <li>Staten Island</li>
+      <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          Previous Searches
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">An item</li>
+          <li class="list-group-item">A second item</li>
+          <li class="list-group-item">A third item</li>
         </ul>
-    </div>
+      </div>
 
     <!-- script src -->
 </body>
