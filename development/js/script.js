@@ -1,15 +1,16 @@
-// 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat '&lon=' + lon + '&exclude=hourly,minutely,alerts&units=imperial&appid=' + appid
-
-// 'http://api.openweathermap.org/geo/1.0/direct?q=' + location + '&limit=1&appid=' + appid;
-
-/*
-	get a reference to search-form, history-list, today, forecast
-*/
-
-// create a var for appid - var appid = 'd91f911bcf2c0f925fb6535547a5ddc9';
+const currentDate = moment().format('ddd MMMM DD' + ', ' + 'YYYY');
+const currentTime = moment().format('LT');
 const searchEl = document.querySelector('#search-field')
+var todayDate = document.querySelector('#current-date')
+var todayTemp = document.querySelector('#current-temp')
+var todayHumidity = document.querySelector('#current-humidity')
+var todayWind = document.querySelector('#current-wind')
+var todayUv = document.querySelector('#current-uv')
+var latitude
+var longitude
 const apiKey = 'e65d424e1ef4600643d29a7a40affd05'
 const weatherAPI = 'http://api.openweathermap.org/data/2.5/weather?q='+'Bronx'+'&appid='+apiKey
+const fullWeatherAPI= 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}'
 
 fetch(weatherAPI)
   .then(function (response) {
@@ -17,13 +18,61 @@ fetch(weatherAPI)
   })
   .then(function (json) {
       console.log(json)
-      // firstSprite.src = json.sprites.front_default
-      // firstSprite.alt = json.name
-      // firstPokeName.textContent = json.name
-      // console.log(json)
+      todayTemp.textContent = json.main.temp;
+      todayHumidity.textContent = json.main.humidity;
+      todayWind.textContent = json.wind.speed;
+      todayUv.textContent = json.main.temp;
   })
 
 console.log(searchEl)
+
+// const getCoordinates = () => {
+//   fetch(weatherAPI)
+//   .then(function (response) {
+//     return response.json()
+//   })
+//   .then(function (json) {
+//     var lat = json.coord.lat
+//     var lon = json.coord.lon
+//     console.log(lat, lon)
+//   })
+// }
+
+// getCoordinates()
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(locationSuccess, locationFail);
+  } else {
+    locationFail();
+  }
+}
+
+// function for startup if statement - success
+function locationSuccess(position) {
+  lat = position.coords.latitude.toString();
+  long = position.coords.longitude.toString();
+  getWeather(lat, long);
+}
+// function for startup if statement - fail, opens modal
+function locationFail(error) {
+  //show the modal here. You might not really need to use the error param here, makes sense to me to just launch the modal regardless
+  showModal.classList.add('show-modal');
+  searchModal.addEventListener('submit', function (e) {
+    e.preventDefault();
+    let zipCode = modalInput.value;
+    const currentWeatherURL = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=93fbb945657a5e5ca75650241870b021`;
+
+    fetch(currentWeatherURL).then(function (response) {
+      return response.json().then(function (data) {
+        getWeather(data.coord.lat, data.coord.lon);
+        searchForm.reset();
+        showModal.classList.remove('show-modal');
+      });
+    });
+  });
+}
+
 
 
 // variable to hold our search history !searchHistory.includes(city)
