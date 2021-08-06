@@ -10,7 +10,7 @@ var latitude
 var longitude
 const apiKey = 'e65d424e1ef4600643d29a7a40affd05'
 const weatherAPI = 'http://api.openweathermap.org/data/2.5/weather?q='+'Bronx'+'&appid='+apiKey
-const fullWeatherAPI= 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}'
+const fullWeatherAPI= `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude={part}&appid=${apiKey}`
 
 fetch(weatherAPI)
   .then(function (response) {
@@ -42,6 +42,16 @@ getWeatherData()
 function getWeatherData() {
   navigator.geolocation.getCurrentPosition((success) => {
     console.log(success)
+
+    let {latitude, longitude} = success.coords
+
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}`)
+      .then(function (response) {
+        return response.json()
+      })
+      .then(function (json) {
+        console.log(json)
+      })
   });
 }
 
