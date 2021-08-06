@@ -71,7 +71,7 @@ function onSearch () {
   let city = searchEl.value;
   console.log(city)
 
-  fetch('http://api.openweathermap.org/data/2.5/weather?q='+city+'&appid='+apiKey+'&units=imperial')
+  fetch('https://api.openweathermap.org/data/2.5/weather?q='+city+'&appid='+apiKey+'&units=imperial')
   .then(function (response) {
       return response.json()
   })
