@@ -6,37 +6,17 @@ var todayTemp = document.querySelector('#current-temp')
 var todayHumidity = document.querySelector('#current-humidity')
 var todayWind = document.querySelector('#current-wind')
 var todayUv = document.querySelector('#current-uv')
+var tomorrowCard = document.getElementById('tomorrow-card')
+var cardTitle = document.querySelector('.card-title') 
+var countyTitleOne = document.querySelector('.county-title-1') 
+var countyTitleTwo = document.querySelector('.county-title-2') 
+var countyTitleThree = document.querySelector('.county-title-3') 
+var countyTitleFour = document.querySelector('.county-title-4') 
+var countyTitleFive = document.querySelector('.county-title-5') 
 var latitude
 var longitude
 const apiKey = 'e65d424e1ef4600643d29a7a40affd05'
 const weatherAPI = 'http://api.openweathermap.org/data/2.5/weather?q='+'Bronx'+'&appid='+apiKey+'&units=imperial'
-const fullWeatherAPI= `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude={part}&appid=${apiKey}&units=imperial`
-
-fetch(weatherAPI)
-  .then(function (response) {
-      return response.json()
-  })
-  .then(function (json) {
-      console.log(json)
-      todayTemp.textContent = json.main.temp;
-      todayHumidity.textContent = json.main.humidity;
-      todayWind.textContent = json.wind.speed;
-      todayUv.textContent = json.main.temp;
-  })
-
-// const getCoordinates = () => {
-//   fetch(weatherAPI)
-//   .then(function (response) {
-//     return response.json()
-//   })
-//   .then(function (json) {
-//     var lat = json.coord.lat
-//     var lon = json.coord.lon
-//     console.log(lat, lon)
-//   })
-// }
-
-// getCoordinates()
 
 getWeatherData()
 function getWeatherData() {
@@ -45,14 +25,34 @@ function getWeatherData() {
 
     let {latitude, longitude} = success.coords
 
-    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}`)
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=imperial`)
       .then(function (response) {
         return response.json()
       })
       .then(function (json) {
         console.log(json)
+        // tomorrowCard.textContent
       })
   });
+
+    fetch(weatherAPI)
+    .then(function (response) {
+        return response.json()
+    })
+    .then(function (json) {
+        console.log(json)
+        console.log(cardTitle)
+        todayTemp.textContent = json.main.temp;
+        todayHumidity.textContent = json.main.humidity;
+        todayWind.textContent = json.wind.speed;
+        todayUv.textContent = json.main.temp;
+        cardTitle.textContent = json.name;
+        countyTitleOne.textContent = json.name;
+        countyTitleTwo.textContent = json.name;
+        countyTitleThree.textContent = json.name;
+        countyTitleFour.textContent = json.name;
+        countyTitleFive.textContent = json.name;
+    })
 }
 
 
