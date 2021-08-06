@@ -1,5 +1,3 @@
-const currentDate = moment().format('ddd MMMM DD' + ', ' + 'YYYY');
-const currentTime = moment().format('LT');
 var searchEl = document.querySelector(".form-input");
 var searchButtonEl = document.querySelector(".submit-search");
 var todayDate = document.querySelector('#current-date')
@@ -39,6 +37,30 @@ var longitude
 const apiKey = 'e65d424e1ef4600643d29a7a40affd05'
 const weatherAPI = 'http://api.openweathermap.org/data/2.5/weather?q='+'Bronx'+'&appid='+apiKey+'&units=imperial'
 
+let today = new Date();
+
+let month = today.getMonth()+1
+let year = today.getFullYear();
+let date = today.getDate();
+let twoDate = date+1
+let threeDate = date+2
+let fourDate = date+3
+let fiveDate = date+4
+let sixDate = date+5
+
+let currentDate = `${month}/${date}/${year}`;
+let secondDate = `${month}/${twoDate}/${year}`;
+let thirdDate = `${month}/${threeDate}/${year}`;
+let fourthDate = `${month}/${fourDate}/${year}`;
+let fifthDate = `${month}/${fiveDate}/${year}`;
+let sixthDate = `${month}/${sixDate}/${year}`;
+
+console.log(currentDate);
+console.log(secondDate);
+console.log(thirdDate);
+console.log(fourthDate);
+console.log(fifthDate);
+console.log(sixthDate);
 
 searchButtonEl.addEventListener("click", onSearch);
 
@@ -53,6 +75,7 @@ function onSearch () {
   .then(function (json) {
       console.log(json)
       console.log(cardTitle)
+      todayDate.textContent = currentDate
       todayTemp.textContent = json.main.temp;
       todayHumidity.textContent = json.main.humidity;
       todayWind.textContent = json.wind.speed;
