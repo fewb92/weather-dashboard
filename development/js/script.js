@@ -44,7 +44,7 @@ var threeConditions = document.querySelector('#forecast-conditions-3')
 var fourConditions = document.querySelector('#forecast-conditions-4')
 var fiveConditions = document.querySelector('#forecast-conditions-5')
 var weatherIcon = document.querySelector('.weather-icon')
-var tomorrowIcon = document.querySelector('.forecast-icon-2')
+var tomorrowIcon = document.querySelector('.forecast-icon-1')
 var twoIcon = document.querySelector('.forecast-icon-2')
 var threeIcon = document.querySelector('.forecast-icon-3')
 var fourIcon = document.querySelector('.forecast-icon-4')
@@ -154,6 +154,7 @@ function onSearch () {
         const iconFour = json.daily[3].weather[0].icon
         const iconFive = json.daily[4].weather[0].icon
         tomorrowIcon.innerHTML = `<img src="icons/${icon}.png"></img>`
+        console.log(tomorrowIcon)
         twoIcon.innerHTML = `<img src="icons/${iconTwo}.png"></img>`
         threeIcon.innerHTML = `<img src="icons/${iconThree}.png"></img>`
         fourIcon.innerHTML = `<img src="icons/${iconFour}.png"></img>`
