@@ -23,6 +23,16 @@ var twoHum = document.querySelector('#forecast-humidity-2')
 var threeHum = document.querySelector('#forecast-humidity-3')
 var fourHum = document.querySelector('#forecast-humidity-4')
 var fiveHum = document.querySelector('#forecast-humidity-5')
+var tomorrowWind = document.querySelector('#forecast-wind-1')
+var twoWind = document.querySelector('#forecast-wind-2')
+var threeWind = document.querySelector('#forecast-wind-3')
+var fourWind = document.querySelector('#forecast-wind-4')
+var fiveWind = document.querySelector('#forecast-wind-5')
+var tomorrowUV = document.querySelector('#forecast-uv-1')
+var twoUV = document.querySelector('#forecast-uv-2')
+var threeUV = document.querySelector('#forecast-uv-3')
+var fourUV = document.querySelector('#forecast-uv-4')
+var fiveUV = document.querySelector('#forecast-uv-5')
 var latitude
 var longitude
 const apiKey = 'e65d424e1ef4600643d29a7a40affd05'
@@ -52,6 +62,16 @@ function getWeatherData() {
         threeHum.textContent = json.daily[2].humidity
         fourHum.textContent = json.daily[3].humidity
         fiveHum.textContent = json.daily[4].humidity
+        tomorrowWind.textContent = json.daily[0].wind_speed
+        twoWind.textContent = json.daily[1].wind_speed
+        threeWind.textContent = json.daily[2].wind_speed
+        fourWind.textContent = json.daily[3].wind_speed
+        fiveWind.textContent = json.daily[4].wind_speed
+        tomorrowUV.textContent = json.daily[0].uvi
+        twoUV.textContent = json.daily[0].uvi
+        threeUV.textContent = json.daily[0].uvi
+        fourUV.textContent = json.daily[0].uvi
+        fiveUV.textContent = json.daily[0].uvi
       })
   });
 
