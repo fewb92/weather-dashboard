@@ -49,6 +49,10 @@ var twoIcon = document.querySelector('.forecast-icon-2')
 var threeIcon = document.querySelector('.forecast-icon-3')
 var fourIcon = document.querySelector('.forecast-icon-4')
 var fiveIcon = document.querySelector('.forecast-icon-5')
+var todayCard = document.querySelector('.today-card')
+var cardGroup = document.querySelector('.card-group')
+var prevSearches = document.querySelector('.prev-search')
+var cityList = document.querySelector('.cityname')
 var latitude
 var longitude
 const apiKey = 'e65d424e1ef4600643d29a7a40affd05'
@@ -72,8 +76,6 @@ let fourthDate = `${month}/${fourDate}/${year}`;
 let fifthDate = `${month}/${fiveDate}/${year}`;
 let sixthDate = `${month}/${sixDate}/${year}`;
 
-
-
 searchButtonEl.addEventListener("click", onSearch);
 searchEl.addEventListener("keypress", function (e) {
   if (e.key === 'Enter') {
@@ -84,6 +86,13 @@ searchEl.addEventListener("keypress", function (e) {
 function onSearch () {
   let city = searchEl.value;
   console.log(city)
+  let newCity = document.createElement('option')
+  newCity.innerHTML = `<option value="${city}">`
+  cityList.appendChild(newCity)
+
+  cardGroup.classList.remove('hidden')
+  todayCard.classList.remove('hidden')
+
 
   fetch('https://api.openweathermap.org/data/2.5/weather?q='+city+'&appid='+apiKey+'&units=imperial')
   .then(function (response) {
