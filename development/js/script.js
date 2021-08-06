@@ -43,6 +43,7 @@ var twoConditions = document.querySelector('#forecast-conditions-2')
 var threeConditions = document.querySelector('#forecast-conditions-3')
 var fourConditions = document.querySelector('#forecast-conditions-4')
 var fiveConditions = document.querySelector('#forecast-conditions-5')
+var weatherIcon = document.querySelector('.weather-icon')
 var latitude
 var longitude
 const apiKey = 'e65d424e1ef4600643d29a7a40affd05'
@@ -65,6 +66,8 @@ let thirdDate = `${month}/${threeDate}/${year}`;
 let fourthDate = `${month}/${fourDate}/${year}`;
 let fifthDate = `${month}/${fiveDate}/${year}`;
 let sixthDate = `${month}/${sixDate}/${year}`;
+
+
 
 searchButtonEl.addEventListener("click", onSearch);
 searchEl.addEventListener("keypress", function (e) {
@@ -96,6 +99,10 @@ function onSearch () {
       countyTitleThree.textContent = json.name;
       countyTitleFour.textContent = json.name;
       countyTitleFive.textContent = json.name;
+      const icon = json.weather[0].icon
+      weatherIcon.innerHTML = `<img src="icons/${icon}.png"></img>`
+      console.log(weatherIcon)
+      console.log(icon)
       let lat = json.coord.lat
       let lon = json.coord.lon
       fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`)
