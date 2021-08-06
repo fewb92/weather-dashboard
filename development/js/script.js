@@ -12,6 +12,11 @@ var countyTitleTwo = document.querySelector('.county-title-2')
 var countyTitleThree = document.querySelector('.county-title-3') 
 var countyTitleFour = document.querySelector('.county-title-4') 
 var countyTitleFive = document.querySelector('.county-title-5') 
+var cardDateOne = document.querySelector('#forecast-date-1')
+var cardDateTwo = document.querySelector('#forecast-date-2')
+var cardDateThree = document.querySelector('#forecast-date-3')
+var cardDateFour = document.querySelector('#forecast-date-4')
+var cardDateFive = document.querySelector('#forecast-date-5')
 var tomorrowTemp = document.querySelector('#forecast-temp-1')
 var twoTemp = document.querySelector('#forecast-temp-2')
 var threeTemp = document.querySelector('#forecast-temp-3')
@@ -95,6 +100,11 @@ function onSearch () {
       .then(function (json) {
         console.log(json)
         console.log(json.daily[0].temp.day)
+        cardDateOne.textContent = secondDate
+        cardDateTwo.textContent = thirdDate
+        cardDateThree.textContent = fourthDate
+        cardDateFour.textContent = fifthDate
+        cardDateFive.textContent = sixthDate
         tomorrowTemp.textContent = json.daily[0].temp.day
         twoTemp.textContent = json.daily[1].temp.day
         threeTemp.textContent = json.daily[2].temp.day
