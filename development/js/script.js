@@ -13,6 +13,16 @@ var countyTitleTwo = document.querySelector('.county-title-2')
 var countyTitleThree = document.querySelector('.county-title-3') 
 var countyTitleFour = document.querySelector('.county-title-4') 
 var countyTitleFive = document.querySelector('.county-title-5') 
+var tomorrowTemp = document.querySelector('#forecast-temp-1')
+var twoTemp = document.querySelector('#forecast-temp-2')
+var threeTemp = document.querySelector('#forecast-temp-3')
+var fourTemp = document.querySelector('#forecast-temp-4')
+var fiveTemp = document.querySelector('#forecast-temp-5')
+var tomorrowHum = document.querySelector('#forecast-humidity-1')
+var twoHum = document.querySelector('#forecast-humidity-2')
+var threeHum = document.querySelector('#forecast-humidity-3')
+var fourHum = document.querySelector('#forecast-humidity-4')
+var fiveHum = document.querySelector('#forecast-humidity-5')
 var latitude
 var longitude
 const apiKey = 'e65d424e1ef4600643d29a7a40affd05'
@@ -31,7 +41,17 @@ function getWeatherData() {
       })
       .then(function (json) {
         console.log(json)
-        // tomorrowCard.textContent
+        console.log(json.daily[0].temp.day)
+        tomorrowTemp.textContent = json.daily[0].temp.day
+        twoTemp.textContent = json.daily[1].temp.day
+        threeTemp.textContent = json.daily[2].temp.day
+        fourTemp.textContent = json.daily[3].temp.day
+        fiveTemp.textContent = json.daily[4].temp.day
+        tomorrowHum.textContent = json.daily[0].humidity
+        twoHum.textContent = json.daily[1].humidity
+        threeHum.textContent = json.daily[2].humidity
+        fourHum.textContent = json.daily[3].humidity
+        fiveHum.textContent = json.daily[4].humidity
       })
   });
 
