@@ -88,7 +88,7 @@ function onSearch () {
   console.log(city)
   let newCity = document.createElement('option')
   newCity.innerHTML = `<option value="${city}">`
-  cityList.appendChild(newCity)
+  // cityList.appendChild(newCity)
 
   cardGroup.classList.remove('hidden')
   todayCard.classList.remove('hidden')
