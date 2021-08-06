@@ -24,8 +24,6 @@ fetch(weatherAPI)
       todayUv.textContent = json.main.temp;
   })
 
-console.log(searchEl)
-
 // const getCoordinates = () => {
 //   fetch(weatherAPI)
 //   .then(function (response) {
@@ -40,38 +38,15 @@ console.log(searchEl)
 
 // getCoordinates()
 
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(locationSuccess, locationFail);
-  } else {
-    locationFail();
-  }
-}
-
-// function for startup if statement - success
-function locationSuccess(position) {
-  lat = position.coords.latitude.toString();
-  long = position.coords.longitude.toString();
-  getWeather(lat, long);
-}
-// function for startup if statement - fail, opens modal
-function locationFail(error) {
-  //show the modal here. You might not really need to use the error param here, makes sense to me to just launch the modal regardless
-  showModal.classList.add('show-modal');
-  searchModal.addEventListener('submit', function (e) {
-    e.preventDefault();
-    let zipCode = modalInput.value;
-    const currentWeatherURL = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=93fbb945657a5e5ca75650241870b021`;
-
-    fetch(currentWeatherURL).then(function (response) {
-      return response.json().then(function (data) {
-        getWeather(data.coord.lat, data.coord.lon);
-        searchForm.reset();
-        showModal.classList.remove('show-modal');
-      });
-    });
+getWeatherData()
+function getWeatherData() {
+  navigator.geolocation.getCurrentPosition((success) => {
+    console.log(success)
   });
 }
+
+
+
 
 
 
