@@ -61,6 +61,11 @@ let fifthDate = `${month}/${fiveDate}/${year}`;
 let sixthDate = `${month}/${sixDate}/${year}`;
 
 searchButtonEl.addEventListener("click", onSearch);
+searchEl.addEventListener("keypress", function (e) {
+  if (e.key === 'Enter') {
+    onSearch();
+  }
+});
 
 function onSearch () {
   let city = searchEl.value;
