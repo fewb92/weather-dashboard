@@ -60,13 +60,6 @@ let fourthDate = `${month}/${fourDate}/${year}`;
 let fifthDate = `${month}/${fiveDate}/${year}`;
 let sixthDate = `${month}/${sixDate}/${year}`;
 
-console.log(currentDate);
-console.log(secondDate);
-console.log(thirdDate);
-console.log(fourthDate);
-console.log(fifthDate);
-console.log(sixthDate);
-
 searchButtonEl.addEventListener("click", onSearch);
 
 function onSearch () {
@@ -84,7 +77,6 @@ function onSearch () {
       todayTemp.textContent = json.main.temp;
       todayHumidity.textContent = json.main.humidity;
       todayWind.textContent = json.wind.speed;
-      todayUv.textContent = json.main.temp;
       cardTitle.textContent = json.name;
       countyTitleOne.textContent = json.name;
       countyTitleTwo.textContent = json.name;
@@ -120,6 +112,7 @@ function onSearch () {
         threeWind.textContent = json.daily[2].wind_speed
         fourWind.textContent = json.daily[3].wind_speed
         fiveWind.textContent = json.daily[4].wind_speed
+        todayUv.textContent = json.daily[0].uvi
         tomorrowUV.textContent = json.daily[0].uvi
         twoUV.textContent = json.daily[0].uvi
         threeUV.textContent = json.daily[0].uvi
